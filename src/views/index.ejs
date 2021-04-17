@@ -63,7 +63,7 @@
           </div>
           <a class="button orange" href="/job">
             <span>
-              <img src="/images/plus-24.svg" alt="Novo Job" /> 
+              <img src="/images/plus-24.svg" alt="Novo Job" />
             </span>
             Adicionar novo job
           </a>
@@ -76,46 +76,32 @@
         <h1 class="sr-only">Trabalhos</h1>
 
         <div class="cards">
+          <% jobs.forEach((job) =>{ %>
 
-           <% jobs.forEach((job) =>{  %>
-                
-            <div class="card progress" data-id=" <%= job.id %>  ">
-              <div class="<%= job.id %> "></div>
-              <div class="name column">
-                <%= job.name %>
-              </div>
-              <div class="deadline column">
-                <span>Prazo</span>
-                <p>3 dias para a entrega</p>
-              </div>
-              <div class="amount column">
-                <span>Valor</span>
-                <p>R$ 4500,00</p>
-              </div>
-              <div class="status badge column">
-                Em andamento
-              </div>
-              <div class="actions column flex">
-                <p class="sr-only">Ações</p>
-                <a 
-                  href="/job/edit" 
-                  class="button white edit" 
-                  title="Editar Job">
-                  <img src="/images/edit-24.svg"
-                   alt="Editar Job" />
-                </a>
-                <button class="delete button white" 
-                 title="Excluir Job">
-                  <img src="/images/trash-24.svg" 
-                  alt="Excluir Job" />
-                </button>
-              </div>
+          <div class="card progress" data-id=" <%= job.id %>  ">
+            <div class="<%= job.id %>"></div>
+            <div class="name column"><%= job.name %></div>
+            <div class="deadline column">
+              <span>Prazo</span>
+              <p>3 dias para a entrega</p>
             </div>
-            <!-- end card -->
-            <%  })  %>
-
-        
-
+            <div class="amount column">
+              <span>Valor</span>
+              <p>R$ 4500,00</p>
+            </div>
+            <div class="status badge column">Em andamento</div>
+            <div class="actions column flex">
+              <p class="sr-only">Ações</p>
+              <a href="/job/edit" class="button white edit" title="Editar Job">
+                <img src="/images/edit-24.svg" alt="Editar Job" />
+              </a>
+              <button class="delete button white" title="Excluir Job">
+                <img src="/images/trash-24.svg" alt="Excluir Job" />
+              </button>
+            </div>
+          </div>
+          <!-- end card -->
+          <% }) %>
         </div>
         <!-- end cards -->
       </main>
@@ -126,23 +112,20 @@
       <div class="modal">
         <img src="/images/trash-48.svg" alt="Excluir Job" title="Excluir Job" />
         <h3>Excluir Job</h3>
-        <p>Quer mesmo excluir esse job? <br/>
-        Ele será apagado para sempre.  
         <p>
+          Quer mesmo excluir esse job? <br />
+          Ele será apagado para sempre.
+        </p>
+
+        <p></p>
         <footer>
-          <a 
-            class="button gray" 
-            href="#">Cancelar</a>
-          <button
-            class="button red"
-            type="submit"
-            form="delete-job">Excluir Job</button>
+          <a class="button gray" href="#">Cancelar</a>
+          <button class="button red" type="submit" form="delete-job">
+            Excluir Job
+          </button>
         </footer>
       </div>
-      <form 
-        method="post" 
-        action="/job/delete" 
-        id="delete-job"></form>
+      <form method="post" action="/job/delete" id="delete-job"></form>
     </div>
     <!-- end modal-wrapper -->
   </body>
