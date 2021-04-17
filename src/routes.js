@@ -14,15 +14,68 @@ const profile = {
     "vacation-per-year": 3 ,
 }
 
+const jobs = [
+    {
+        id: 1 ,
+        name: "Pizzaria Guloso" ,
+        'daily-hours': 2 ,
+        'total-hours': 60 ,
+        createdAt: Date.now(),
+    },
+    {
+        id: 2,
+        name: "OneTwo Project" ,
+        'daily-hours': 3 ,
+        'total-hours': 47 ,
+        createdAt: Date.now()
+    }
+]
 
 
 
-routes.get('/' , (req, res) => res.render( views + 'index'))
+routes.get('/' , (req, res) => {
+      
+    const updateJobs = jobs.map((job) => {
+    //ajustes no job 
+    //calculo de tempo restante 
+    const remainingDays = (job["total-hours"] / job["daily-hours"]).toFixed()
+
+       const createdDate = new Date(job.createdAt)    
+       const dueDay = createdDate.getDate() + Number(remainingDays)
+       const dueDate = createdDate.setDate()
+
+        
+    return job
+    }) 
+
+  
+   return res.render( views + 'index' , {jobs})
+
+})
+
+
+
+
+
+
+
+
 routes.get('/job' , (req, res) => res.render(views +  'job'))
+
 routes.post('/job' , (req, res) => {
- console.log(req.body)                             /////req = uma requisição q  pega dados
+const lasId = jobs[jobs.length - 1]?.id || 1;
+ jobs.push({
+     id: lastId,
+     name: req.body.name,
+     'daily-hours': req.body[daily-hours],
+     'total-hours': req.body[total-hours],
+     createdAt: Date.now() // atribuindo data de hoje 
+ })   
+ return res.redirect('/')
 }) 
+
 routes.get('/job/edit' , (req, res) => res.render( views + 'job-edit'))
+
 routes.get('/profile' , (req, res) => res.render( views + 'profile', {profile: profile}))
 
 module.exports = routes;
