@@ -93,7 +93,7 @@
             </div>
             <div class="amount column">
               <span>Valor</span>
-              <p>R$ <%= console.log(job)%> </p>
+              <p>R$ <%= job.budget.toFixed(2).replace('.', ',') %> </p>
             </div>
             <div class="status badge column"> <%= job.status === 'done' ? 'encerrado' : 'Em andamento' %>  </div>
             <div class="actions column flex">

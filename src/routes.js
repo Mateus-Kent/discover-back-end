@@ -38,7 +38,7 @@ const Profile = {
 
 const Job = {
   data: [
-    [
+    
       {
         id: 1,
         name: 'Pizzaria Guloso',
@@ -53,7 +53,7 @@ const Job = {
         'total-hours': 47,
         createdAt: Date.now(),
       },
-    ]
+    
   ],
   
   controllers: {
