@@ -166,9 +166,9 @@ const Job = {
        
       const jobId = req.params.id;
 
-      Job.data = Job.data.filter( job => Number(job.Id) !== Number(jobId))
+      Job.data = Job.data.filter( job => Number(job.id) !== Number(jobId))
 
-
+      console.log(res)
       return res.redirect("/");
     }
 
