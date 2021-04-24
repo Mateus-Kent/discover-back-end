@@ -5,7 +5,7 @@ const routes = express.Router(); // cria rotas
 
 const ProfileController = require('./controllers/ProfileController');
 
-const JobController = require('./controllers/JobController');
+const JobController = require('./controllers/JobControllers');
 
 
 routes.get('/', JobController.index);
