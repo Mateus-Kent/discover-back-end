@@ -1,5 +1,3 @@
-
-
 let data = {
       name: 'Mateus Kent',
       avatar: 'https://github.com/Mateus-Kent.png',
@@ -19,4 +17,3 @@ let data = {
             data = newData;
         }
     }
-

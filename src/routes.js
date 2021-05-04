@@ -7,8 +7,13 @@ const ProfileController = require('./controllers/ProfileController');
 
 const JobController = require('./controllers/JobControllers');
 
+const DashboardController = require('./controllers/DashboardController');
 
-routes.get('/', JobController.index);
+// get = buscar 
+//post = salvar
+//put = alterar 
+
+routes.get('/', DashboardController.index);
 
 routes.get('/job', JobController.create);
 
