@@ -11,7 +11,7 @@ module.exports = {
     const jobs = Job.get();
     const lastId = jobs[jobs.length - 1]?.id || 1;
 
-    jobs.push({
+    Job.create( {
       id: lastId + 1,
       name: req.body.name,
       'daily-hours': req.body['daily-hours'],
@@ -19,6 +19,7 @@ module.exports = {
       createdAt: Date.now(), // atribuindo data de hoje
     });
 
+   
     return res.redirect('/');
   },
 
