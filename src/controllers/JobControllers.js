@@ -8,15 +8,11 @@ module.exports = {
   },
 
   async save(req, res) {
-    const jobs = await Job.get();
-    const lastId = jobs[jobs.length - 1]?.id || 1;
-
-    Job.create( {
-      id: lastId + 1,
+   await Job.create( {
       name: req.body.name,
       'daily-hours': req.body['daily-hours'],
       'total-hours': req.body['total-hours'],
-      createdAt: Date.now(), // atribuindo data de hoje
+      created_at: Date.now(), // atribuindo data de hoje
     });
 
    
@@ -40,40 +36,25 @@ module.exports = {
     return res.render(`job-edit`, { job });
   },
 
- async update(req, res) {
-    const jobId = req.params.id;
-    const jobs = await Job.get();
+  async update(req, res) {
+    const jobId = req.params.id
 
-    const job = jobs.find((job) => Number(job.id) === Number(jobId));
-
-    if (!job) {
-      return res.send('job not found');
-    }
-
-    const updateJob = {
-      ...job,
+    const updatedJob = {
       name: req.body.name,
-      'total-hours': req.body['total-hours'],
-      'daily-hours': req.body['daily-hours'],
-    };
+      "total-hours": req.body["total-hours"], 
+      "daily-hours": req.body["daily-hours"], 
+    }      
 
-    const newJobs = jobs.map((job) => {
-      if (Number(job.id) === Number(job.id)) {
-        job = updateJob;
-      }
+    await Job.update(updatedJob, jobId)
 
-      return job;
-    })
-
-    Job.update(newJobs)
-
-    return res.redirect('/job/' + jobId);
+    res.redirect('/job/' + jobId)
   },
 
-  delete(req, res) {
+  
+  async delete(req, res) {
     const jobId = req.params.id;
 
-    Job.delete(jobId);   
+    await Job.delete(jobId);   
 
     return res.redirect('/');
   },

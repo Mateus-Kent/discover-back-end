@@ -21,6 +21,7 @@ module.exports = {
 
       const remaining = JobUtils.remainingDays(job);
       const status = remaining <= 0 ? 'done' : 'progress';
+      
 
       // somando a quantidade de status
       statusCount[status] += 1;
