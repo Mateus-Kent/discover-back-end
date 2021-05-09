@@ -8,9 +8,8 @@ const path = require('path');
 // usando template engine
 server.set('view engine', 'ejs'); // todas as rotas do express serão em ejs
 
-// mudar a localização da pasta views 
-server.set('views', path.join(__dirname , 'views'))    
-
+// mudar a localização da pasta views
+server.set('views', path.join(__dirname, 'views'));
 
 // habilitar arquivos estáticos
 server.use(express.static('public'));

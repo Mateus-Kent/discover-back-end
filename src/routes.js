@@ -9,9 +9,9 @@ const JobController = require('./controllers/JobControllers');
 
 const DashboardController = require('./controllers/DashboardController');
 
-// get = buscar 
+// get = buscar
 //post = salvar
-//put = alterar 
+//put = alterar
 
 routes.get('/', DashboardController.index);
 

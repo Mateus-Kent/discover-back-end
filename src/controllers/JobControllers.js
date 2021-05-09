@@ -1,6 +1,6 @@
-const Job = require('../model/Job')
-const JobUtils = require('../utils/jobUtils')
-const Profile = require('../model/Profile')
+const Job = require('../model/Job');
+const JobUtils = require('../utils/jobUtils');
+const Profile = require('../model/Profile');
 
 module.exports = {
   create(req, res) {
@@ -8,14 +8,13 @@ module.exports = {
   },
 
   async save(req, res) {
-   await Job.create( {
+    await Job.create({
       name: req.body.name,
       'daily-hours': req.body['daily-hours'],
       'total-hours': req.body['total-hours'],
       created_at: Date.now(), // atribuindo data de hoje
     });
 
-   
     return res.redirect('/');
   },
 
@@ -29,7 +28,7 @@ module.exports = {
       return res.send('job not found');
     }
 
-    const profile = await Profile.get()
+    const profile = await Profile.get();
 
     job.budget = JobUtils.calculateBudge(job, profile['value-hour']);
 
@@ -37,24 +36,23 @@ module.exports = {
   },
 
   async update(req, res) {
-    const jobId = req.params.id
+    const jobId = req.params.id;
 
     const updatedJob = {
       name: req.body.name,
-      "total-hours": req.body["total-hours"], 
-      "daily-hours": req.body["daily-hours"], 
-    }      
+      'total-hours': req.body['total-hours'],
+      'daily-hours': req.body['daily-hours'],
+    };
 
-    await Job.update(updatedJob, jobId)
+    await Job.update(updatedJob, jobId);
 
-    res.redirect('/job/' + jobId)
+    res.redirect('/job/' + jobId);
   },
 
-  
   async delete(req, res) {
     const jobId = req.params.id;
 
-    await Job.delete(jobId);   
+    await Job.delete(jobId);
 
     return res.redirect('/');
   },

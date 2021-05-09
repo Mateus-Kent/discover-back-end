@@ -21,7 +21,6 @@ module.exports = {
 
       const remaining = JobUtils.remainingDays(job);
       const status = remaining <= 0 ? 'done' : 'progress';
-      
 
       // somando a quantidade de status
       statusCount[status] += 1;
@@ -29,7 +28,8 @@ module.exports = {
       // total de horas por dia de cada JOB em progresso
       jobTotalHours =
         status == 'progress'
-          ? (jobTotalHours += Number(job['daily-hours'])) : jobTotalHours;
+          ? (jobTotalHours += Number(job['daily-hours']))
+          : jobTotalHours;
 
       return {
         ...job,
